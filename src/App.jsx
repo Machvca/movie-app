@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import Spinner from "./components/Spinner";
 import MovieCard from "./components/MovieCard";
 import { useDebounce } from "react-use";
+import { updateSearchCount } from "./appwrite";
 
 const API_BASE_URL = "http://api.themoviedb.org/3";
 
@@ -21,7 +22,6 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [MovieList, setMovieList] = useState([]);
   const [IsLoading, setIsLoading] = useState(false);
-
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
 
 
@@ -50,6 +50,9 @@ const App = () => {
       }
 
       setMovieList(data.results || []);
+if (query && data.results.length > 0) {
+  await updateSearchCount(query, data.results[0])
+}
     } catch (error) {
       console.error(`Error fetching movies: ${error}`);
       setErrorMessage("Error fetching movies. Please try again later.");
@@ -99,3 +102,4 @@ export default App;
 // https://www.youtube.com/watch?v=8vIDZO_w7lY&list=LL&index=3&t=308s
 // 57:40
 //1:34:57
+//1:59:00
