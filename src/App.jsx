@@ -128,6 +128,4 @@ const App = () => {
 
 export default App;
 
-// https://www.youtube.com/watch?v=8vIDZO_w7lY&list=LL&index=3&t=308s
-// 57:40
-//1:34:57
+

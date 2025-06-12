@@ -8,7 +8,7 @@ const MovieCard = ({movie:{title, vote_average, poster_path, release_date,
       <img
         src={
           poster_path
-            ? `http://image.tmdb.org/t/p/w500/${poster_path}`
+            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
             : "/no-movie.png"
         }
         alt={title}
